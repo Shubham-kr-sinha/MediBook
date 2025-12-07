@@ -41,3 +41,7 @@ connectDB();
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+app.use(cors({
+  origin: ['https://medi-book-seven.vercel.app', 'http://localhost:5173'],
+  credentials: true
+}));
