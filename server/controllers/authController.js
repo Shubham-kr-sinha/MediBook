@@ -42,21 +42,28 @@ export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        console.log('Login attempt for:', email);
+
         const user = await User.findOne({ email });
         if (!user) {
+            console.log('User not found:', email);
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
+        console.log('User found, comparing passwords...');
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
+            console.log('Password mismatch for:', email);
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
+        console.log('Login successful for:', email);
         const payload = { userId: user._id, role: user.role };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
 
         res.json({ token, role: user.role, userId: user._id });
     } catch (error) {
+        console.error('Login error:', error);
         res.status(500).json({ message: 'Server error' });
     }
 };
