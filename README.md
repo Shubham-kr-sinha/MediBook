@@ -169,7 +169,7 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-Your Name - [GitHub](https://github.com/Shubham-kr-sinha)
+Shubham Kumar Sinha - [GitHub](https://github.com/Shubham-kr-sinha)
 
 ## 🤝 Contributing
 
